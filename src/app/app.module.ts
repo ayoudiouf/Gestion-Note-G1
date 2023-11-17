@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { AcceuilApprenantComponent } from './apprenant/acceuil-apprenant/acceuil-apprenant.component';
 import { AcceuilFormateurComponent } from './formateur/acceuil-formateur/acceuil-formateur.component';
 import { AcceuilAdminComponent } from './admin/acceuil-admin/acceuil-admin.component';
+import { ListeFormateursComponent } from './admin/formateurs/liste-formateurs/liste-formateurs.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AcceuilAdminComponent } from './admin/acceuil-admin/acceuil-admin.compo
     AuthComponent,
     AcceuilApprenantComponent,
     AcceuilFormateurComponent,
-    AcceuilAdminComponent
+    AcceuilAdminComponent,
+    ListeFormateursComponent
   ],
   imports: [
     BrowserModule,

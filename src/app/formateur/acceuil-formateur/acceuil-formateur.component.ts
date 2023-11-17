@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./acceuil-formateur.component.css']
 })
 export class AcceuilFormateurComponent {
+  static getFormateurByUser: any[];
 
 }

@@ -1,0 +1,433 @@
+<div class="maliste pt-3">
+  <h3 class="text-center fw-bold mb-3">Listes des Formateurs</h3>
+    <ul class="list-group list-group-flush">
+
+          <div class="container">
+
+                <!-- <h1 class="fw-bold text-center mb-5">Liste des formateurs de {{userFound.prenom}} {{userFound.nom}}</h1> -->
+                <div class="input-group mb-3 d-flex justify-content-between mt-3">
+                  <!-- <h3>Nos Formateurs</h3> -->
+                  <!-- <input type="text" name="filterValue" class="form-control" [(ngModel)]="filterValue" (input)="onSearch()"> -->
+                  <div class="w-25">
+                    <h3>Nos Formateurs</h3>
+                  </div>
+                  <div class="w-75">
+                    <input type="text" name="filterValue" class="form-control" [(ngModel)]="filterValue" (input)="onSearch()">
+                  </div>
+                  <!-- <button class="input-group-text notactive"><i class="bi bi-search"></i></button> -->
+              </div>
+                <div class="d-flex justify-content-between mb-5">
+                    <div class="col-md-6 mb-3">
+                        <button type="button" class="btn active btn-primary me-3" data-bs-toggle="modal" data-bs-target="#modalAjoutFormateur">Ajouter un formateur</button>
+                        <!-- <button type="button" class="btn active btn-primary me-3" data-bs-toggle="modal" data-bs-target="#modalDetailFormateur">Voir formateur</button> -->
+                        <!-- <button type="button" class="btn active bg-warning" data-bs-toggle="modal" data-bs-target="#modalModifierFormateur">Modifier un formateur</button> -->
+                    </div>
+                </div>
+
+        <!-- La liste des formateurs  -->
+                <div class="list-formateur" *ngFor="let formateurUserFound of filteredElement ">
+                    <div *ngIf="formateurUserFound.etatFormateur == 1">
+                        <div class="card mb-5 shadow-sm ">
+                            <div class="circle-start circle-active "></div>
+                            <div class="card-body formateur-item">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <img src="{{formateurUserFound.photoFormateur}}" class="img-fluid" alt="...">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-grid gap-2 d-md-block text-end btns mt-3">
+                                            <button type="button" class="btn btn-modifier me-3" data-bs-toggle="modal" data-bs-target="#modalModifierFormateur" (click)="chargeInfoModif(formateurUserFound)">modifier</button>
+                                        </div>
+                                        <h5 class="card-title fw-bold my-3">{{formateurUserFound.nomFormateur}} {{formateurUserFound.prenomFormateur}}</h5>
+                                        <p class="card-text"><span class="fw-bold">Téléphone:</span> {{formateurUserFound.telephoneFormateur}}</p>
+                                        <p class="card-text"><span class="fw-bold">Email:</span> {{formateurUserFound.emailFormateur}}</p>
+                                        <p class="card-text"><span class="fw-bold">Matiere:</span> {{formateurUserFound.emailMatiere}}</p>
+                                        <p class="card-text"><span class="fw-bold">Description:</span> {{formateurUserFound.descriptionFormateur}}</p>
+                                        <p class="card-text" *ngIf="formateurUserFound.updatedAt !=''"><span class="fw-bold">Dernière modification:</span> {{formateurUserFound.updatedAt | date:"dd/MM/yyyy 'à' hh:mm a"}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="circle-end ">
+                                <p></p>
+                                <p class="end circle-deseable"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <!-- Fin liste des formateurs  -->
+
+            <!-- Liste des formateurs  -->
+            <div *ngIf="!choice">
+                <h1 class="fw-bold text-center mb-5">Liste des formateurs supprimer de {{userFound.prenom}} {{userFound.nom}}</h1>
+                <div class="d-flex justify-content-between mb-5">
+                    <div class="col-md-6">
+                        <button type="button" class="btn notactive " (click)="listChoice()">Liste formateur</button>
+                        <!-- <button type="button" class="btn btn-corbeille active  ms-3" (click)="viderCorbeille()"  >Vider la corbeille </button> -->
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="filterValue" class="form-control" [(ngModel)]="filterValue" (input)="onSearch()">
+                        <!-- <button class="input-group-text notactive"><i class="bi bi-search"></i></button> -->
+                    </div>
+
+                </div>
+
+                <!-- La liste des formateurs -->
+                <div class="list-formateur" *ngFor="let formateurUserFound of filteredElement ">
+                    <div *ngIf="formateurUserFound.etatFormateur == 0">
+                        <div class="card mb-5 shadow ">
+                            <div class="circle-start active"></div>
+                            <div class="card-body formateur-item">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <img src="{{formateurUserFound.photoFormateur}}" class="" alt="...">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-grid gap-2 d-md-block text-center mt-3">
+                                            <!-- <button class="btn notactive me-3" (click)="suppressionDefinitive(formateurUserFound.idFormateur)">supprimer définitivement</button>
+                                            <button class="btn active"(click)="restaurer(formateurUserFound.idFormateur)">restaurer</button> -->
+                                        </div>
+                                        <h5 class="card-title fw-bold my-3">{{formateurUserFound.nomFormateur}} {{formateurUserFound.prenomFormateur}}</h5>
+                                        <p class="card-text"><span class="fw-bold">Téléphone:</span> {{formateurUserFound.telephoneFormateur}}</p>
+                                        <p class="card-text"><span class="fw-bold">Email:</span> {{formateurUserFound.emailFormateur}}</p>
+                                        <p class="card-text"><span class="fw-bold">Matiere:</span> {{formateurUserFound.matiereFormateur}}</p>
+                                        <p class="card-text"><span class="fw-bold">Description:</span> {{formateurUserFound.descriptionFormateur}}</p>
+                                        <p class="card-text" *ngIf="formateurUserFound.updatedAt !=''"><span class="fw-bold">Dernière modification:</span> {{formateurUserFound.updatedAt | date:"dd/MM/yyyy 'à' hh:mm a"}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="circle-end">
+                                <p></p>
+                                <p class="end notactive"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nom complet</th>
+                  <!-- <th scope="col">prenom</th> -->
+                  <th scope="col">Email</th>
+                  <!-- <th scope="col">Matiéres_Enseigner</th> -->
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let formateur of tabFormateur">
+                  <!-- <th scope="row">1</th> -->
+                  <td>{{ formateur.nomComplet }}</td>
+                  <td>{{ formateur.email }}</td>
+                  <td>{{ formateur.Matiere }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-primary me-3">Voir detail</button></td> <td>
+                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalModifierFormateur">Modifier</button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+        </div>
+
+        <!-- Modal ajouter un formateur -->
+        <div class="modal fade" id="modalAjoutFormateur" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" (submit)="ajouter()">
+                        <div class="mb-4">
+                          <label for="inputName" class="form-label fw-bold">Nom  <span class="champObligatoire">*</span></label>
+                          <input type="text" name="nom" class="form-control" id="inputName" placeholder="Votre nom..." [(ngModel)]="nom">
+                        </div>
+
+                        <div class="mb-4">
+                          <label for="inputSurname" class="form-label fw-bold">Prénom <span class="champObligatoire">*</span></label>
+                          <input type="text" name="prenom" class="form-control" id="inputSurname" placeholder="Votre prénom..." [(ngModel)]="prenom">
+                        </div>
+
+                        <div class="mb-4">
+                          <label for="inputEmail" class="form-label fw-bold">Adresse email <span class="champObligatoire">*</span></label>
+                          <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Votre adresse email..." [(ngModel)]="email">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="inputPhone" class="form-label fw-bold">Téléphone <span class="champObligatoire">*</span></label>
+                            <input type="tel" name="number" class="form-control" id="inputPhone" placeholder="Votre numéro de téléphone..." [(ngModel)]="telephone">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="inputPhotoUrl" class="form-label fw-bold">Adresse de l'image <span class="champObligatoire">*</span></label>
+                            <input type="text" name="photoURL" class="form-control" id="inputPhotoUrl" placeholder="L'adresse valide de l'image..." [(ngModel)]="photoURL">
+                        </div>
+
+                        <div class="mb-4">
+                          <label for="inputMatiere" class="form-label fw-bold">Matiere <span class="champObligatoire">*</span></label>
+                          <input type="text" name="matiere" class="form-control" id="inputmatiere" placeholder="matiere..." [(ngModel)]="matiere">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="exampleFormControlTextarea1" class="form-label fw-bold">Description  <span class="champObligatoire">*</span></label>
+                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3" placeholder="Donner une déscription..." [(ngModel)]="description"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-ajouter">Ajouter</button>
+                          <button type="button" class="btn btn-annuler" data-bs-dismiss="modal">Annuler</button>
+                      </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin modal ajouter un formateur -->
+
+         <!-- Modal detail formateur -->
+         <div class="modal fade" id="modalDetailFormateur" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+              <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <div class="mb-4">
+                        <label for="inputName" class="form-label fw-bold">Nom  <span class="champObligatoire">*</span></label>
+                        <input type="text" name="nom" class="form-control" id="inputName" placeholder="Votre nom..." [(ngModel)]="nom">
+                      </div>
+
+                      <div class="mb-4">
+                        <label for="inputSurname" class="form-label fw-bold">Prénom <span class="champObligatoire">*</span></label>
+                        <input type="text" name="prenom" class="form-control" id="inputSurname" placeholder="Votre prénom..." [(ngModel)]="prenom">
+                      </div>
+
+                      <div class="mb-4">
+                        <label for="inputEmail" class="form-label fw-bold">Adresse email <span class="champObligatoire">*</span></label>
+                        <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Votre adresse email..." [(ngModel)]="email">
+                      </div>
+
+                      <div class="mb-4">
+                          <label for="inputPhone" class="form-label fw-bold">Téléphone <span class="champObligatoire">*</span></label>
+                          <input type="tel" name="number" class="form-control" id="inputPhone" placeholder="Votre numéro de téléphone..." [(ngModel)]="telephone">
+                      </div>
+
+                      <div class="mb-4">
+                          <label for="inputPhotoUrl" class="form-label fw-bold">Adresse de l'image <span class="champObligatoire">*</span></label>
+                          <input type="text" name="photoURL" class="form-control" id="inputPhotoUrl" placeholder="L'adresse valide de l'image..." [(ngModel)]="photoURL">
+                      </div>
+
+                      <div class="mb-4">
+                        <label for="inputMatiere" class="form-label fw-bold">Matiere <span class="champObligatoire">*</span></label>
+                        <input type="text" name="matiere" class="form-control" id="inputPhotoUrl" placeholder="matiere..." [(ngModel)]="matiere">
+                      </div>
+
+                      <div class="mb-4">
+                          <label for="exampleFormControlTextarea1" class="form-label fw-bold">Description  <span class="champObligatoire">*</span></label>
+                          <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3" placeholder="Donner une déscription..." [(ngModel)]="description"></textarea>
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-annuler" data-bs-dismiss="modal">Annuler</button>
+              </div>
+              </div>
+          </div>
+      </div>
+      <!-- Fin modal detail un formateur -->
+
+        <!-- Modal modifier un formateur -->
+        <div class="modal fade" id="modalModifierFormateur" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-4">
+                          <label for="inputName" class="form-label fw-bold">Nom  <span class="champObligatoire">*</span></label>
+                          <input type="text" name="nom" class="form-control" id="inputName" placeholder="Votre nom..." [(ngModel)]="nom">
+                        </div>
+
+                        <div class="mb-4">
+                          <label for="inputSurname" class="form-label fw-bold">Prénom <span class="champObligatoire">*</span></label>
+                          <input type="text" name="prenom" class="form-control" id="inputSurname" placeholder="Votre prénom..." [(ngModel)]="prenom">
+                        </div>
+
+                        <div class="mb-4">
+                          <label for="inputEmail" class="form-label fw-bold">Adresse email <span class="champObligatoire">*</span></label>
+                          <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Votre adresse email..." [(ngModel)]="email">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="inputPhone" class="form-label fw-bold">Téléphone <span class="champObligatoire">*</span></label>
+                            <input type="tel" name="number" class="form-control" id="inputPhone" placeholder="Votre numéro de téléphone..." [(ngModel)]="telephone">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="inputPhotoUrl" class="form-label fw-bold">Adresse de l'image <span class="champObligatoire">*</span></label>
+                            <input type="text" name="photoURL" class="form-control" id="inputPhotoUrl" placeholder="L'adresse valide de l'image..." [(ngModel)]="photoURL">
+                        </div>
+
+                        <div class="mb-4">
+                          <label for="inputMatiere" class="form-label fw-bold">Matiere <span class="champObligatoire">*</span></label>
+                          <input type="text" name="matiere" class="form-control" id="inputPhotoUrl" placeholder="matiere..." [(ngModel)]="matiere">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="exampleFormControlTextarea1" class="form-label fw-bold">Description  <span class="champObligatoire">*</span></label>
+                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3" placeholder="Donner une déscription..." [(ngModel)]="description"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-ajouter">Confirmer</button>
+                          <button type="button" class="btn btn-annuler" data-bs-dismiss="modal">Annuler</button>
+                      </div>
+                    </form>
+                </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Fin modal modifier un formateur-->
+
+
+
+
+    </ul>
+
+</div>
+
+  <!-- Button trigger modal -->
+
+
+<!-- Modal d'ajout Formateur -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter Formateur</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="image" class="form-label">Image(URL)</label>
+          <input type="text" class="form-control" id="image"  [(ngModel)]="formateur.image" image="image" required >
+        </div>
+        <div class="mb-3">
+          <label for="nom" class="form-label">Nom</label>
+          <input type="text" class="form-control" id="nom" [(ngModel)]="formateur.name" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="prenom" class="form-label">Prenom</label>
+          <input type="text" class="form-control" id="prenom" [(ngModel)]="formateur.prenom" prenom="prenom" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="formateur.email" email="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="numero" class="form-label">Telephone</label>
+          <input type="text" class="form-control" id="number" [(ngModel)]="formateur.number" email="number" required>
+        </div>
+        <div class="mb-3">
+          <label for="matiere" class="form-label">Matiere</label>
+          <input type="text" class="form-control" id="matiere" [(ngModel)]="formateur.matiere" matiere="matiere" required>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+            <textarea class="form-control"  id="floatingTextarea2" style="height: 100px" [(ngModel)]="formateur.description" description="description" required></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="showMessage()"  >Ajouter</button>
+
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- Modal modifier formateur -->
+<!-- <div class="modal fade" id="modifierFormateur" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier Formateur</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="image" class="form-label">Image(URL)</label>
+          <input type="text" class="form-control" id="image"  [(ngModel)]="formateur.image" image="image" required >
+        </div>
+        <div class="mb-3">
+          <label for="nom" class="form-label">Nom</label>
+          <input type="text" class="form-control" id="nom" [(ngModel)]="formateur.name" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="prenom" class="form-label">Prenom</label>
+          <input type="text" class="form-control" id="prenom" [(ngModel)]="formateur.prenom" prenom="prenom" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="formateur.email" email="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="numero" class="form-label">Telephone</label>
+          <input type="text" class="form-control" id="number" [(ngModel)]="formateur.number" email="number" required>
+        </div>
+        <div class="mb-3">
+          <label for="matiere" class="form-label">Matiere</label>
+          <input type="text" class="form-control" id="matiere" [(ngModel)]="formateur.matiere" matiere="matiere" required>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+            <textarea class="form-control"  id="floatingTextarea2" style="height: 100px" [(ngModel)]="formateur.description" description="description" required></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="VoirMessage()"  >Modifier</button>
+
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- Modal detail formateur -->
+
+<!-- <div class="modal fade" id="detailFormateur" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="" alt="">
+        <p>Nom: Ly</p>
+        <p>PreNom: Mairie </p>
+        <p>Telephone : 77.025.86.39</p>
+        <p>Description : Professeur universitaire habite a lion</p>
+        <p>Matiéres_Enseigner : Anglais, Français</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+
+
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
