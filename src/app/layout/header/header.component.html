@@ -1,0 +1,74 @@
+<!-- header pour formateur-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary" *ngIf="userRole === 'formateur'">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/acceuil-formateur">Gestion-Note-G1</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/acceuil-formateur">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/lister-evaluation">Gestion des évaluation</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav list-unstyled">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Profil
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Profil</a></li>
+            <li><a class="dropdown-item" href="#">Se deconnecter</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- header pour admin-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary" *ngIf="userRole === 'admin'">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/acceuil-formateur">Gestion-Note-G1</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/acceuil-admin">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/gestion-classe">Gestion des classe</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/gestion-matiere">Gestion des matières</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/gestion-apprenant">Gestion des apprenant</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/gestion-formateur">Gestion des formateur</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav list-unstyled">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Profil
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Profil</a></li>
+            <li><a class="dropdown-item" href="#">Se deconnecter</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
