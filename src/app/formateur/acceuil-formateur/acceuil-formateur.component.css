@@ -1,0 +1,43 @@
+.cards {
+  /* b    order: solid 3px black; */
+  height: 15vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+.card {
+  /* border: solid 1px brown; */
+  background-color: #F8F9FA;
+  color: black;
+  width: 30vh;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 	6px 7px 11px 0px rgba(0, 0, 0, 0.215);
+}
+
+.leftCard {
+  /* border: solid 1px black; */
+  margin-left: 30px;
+}
+.rightCard {
+  /* border: solid 1px black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.bottomMain {
+  /* border: solid 3px black; */
+  height: 63vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1%;
+}
+
+.bottomMainItem{
+  background-color: #F8F9FA;
+  box-shadow: 0px 7px 5px 0px rgba(0,0,0,0.08);
+  border-radius: 15px;
+}

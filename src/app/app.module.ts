@@ -8,6 +8,17 @@ import { FormsModule } from '@angular/forms';
 import { AcceuilApprenantComponent } from './apprenant/acceuil-apprenant/acceuil-apprenant.component';
 import { AcceuilFormateurComponent } from './formateur/acceuil-formateur/acceuil-formateur.component';
 import { AcceuilAdminComponent } from './admin/acceuil-admin/acceuil-admin.component';
+import { AjouterEvaluationComponent } from './formateur/gestionEvaluation/ajouter-evaluation/ajouter-evaluation.component';
+import { ListerEvaluationComponent } from './formateur/gestionEvaluation/lister-evaluation/lister-evaluation.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { ModifierEvaluationComponent } from './formateur/gestionEvaluation/modifier-evaluation/modifier-evaluation.component';
+import { GestionApprenantComponent } from './admin/gestion-apprenant/gestion-apprenant.component';
+import { GestionClasseComponent } from './admin/gestion-classe/gestion-classe.component';
+import { GestionMatiereComponent } from './admin/gestion-matiere/gestion-matiere.component';
+import { UserIdToUsernamePipe } from './pipes/user-id-to-username.pipe';
+import { ClasseIdToClasseNamePipe } from './pipes/classe-id-to-classe-name.pipe';
+import { GestionFormateurComponent } from './admin/gestion-formateur/gestion-formateur.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +26,18 @@ import { AcceuilAdminComponent } from './admin/acceuil-admin/acceuil-admin.compo
     AuthComponent,
     AcceuilApprenantComponent,
     AcceuilFormateurComponent,
-    AcceuilAdminComponent
+    AcceuilAdminComponent,
+    AjouterEvaluationComponent,
+    ListerEvaluationComponent,
+    HeaderComponent,
+    FooterComponent,
+    ModifierEvaluationComponent,
+    GestionApprenantComponent,
+    GestionClasseComponent,
+    GestionMatiereComponent,
+    UserIdToUsernamePipe,
+    ClasseIdToClasseNamePipe,
+    GestionFormateurComponent
   ],
   imports: [
     BrowserModule,
