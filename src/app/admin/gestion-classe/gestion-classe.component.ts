@@ -122,8 +122,6 @@ export class GestionClasseComponent implements OnInit {
         });
       }
     });
+
   }
-
-
-
 }
