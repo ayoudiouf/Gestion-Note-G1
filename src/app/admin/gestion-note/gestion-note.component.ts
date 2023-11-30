@@ -9,8 +9,8 @@ import Swal from 'sweetalert2';
 })
 export class GestionNoteComponent implements OnInit{
 notes: any;
-noteToUpdate(arg0: any) {
-throw new Error('Method not implemented.');
+voirNote(id: any) {
+
 }
   ngOnInit(): void {
 
