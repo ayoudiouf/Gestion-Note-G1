@@ -19,6 +19,7 @@ import { GestionMatiereComponent } from './admin/gestion-matiere/gestion-matiere
 import { UserIdToUsernamePipe } from './pipes/user-id-to-username.pipe';
 import { ClasseIdToClasseNamePipe } from './pipes/classe-id-to-classe-name.pipe';
 import { GestionFormateurComponent } from './admin/gestion-formateur/gestion-formateur.component';
+import { GestionNoteComponent } from './admin/gestion-note/gestion-note.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { GestionFormateurComponent } from './admin/gestion-formateur/gestion-for
     GestionMatiereComponent,
     UserIdToUsernamePipe,
     ClasseIdToClasseNamePipe,
-    GestionFormateurComponent
+    GestionFormateurComponent,
+    GestionNoteComponent
   ],
   imports: [
     BrowserModule,

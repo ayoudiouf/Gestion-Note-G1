@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { find } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,6 +16,20 @@ export class GestionFormateurComponent implements OnInit{
 
   nomCompletFormateur: string = "";
   emailFormateur: string = "";
+
+  formateur = [
+    { image: 'image1.jpg', nomComplet: 'John Doe', email: 'johndoe@example.com', etat: 'actif' },
+    { image: 'image2.jpg', nomComplet: 'Jane Doe', email: 'janedoe@example.com', etat: 'inactif' },
+    { image: 'image3.jpg', nomComplet: 'Bob Smith', email: 'bobsmith@example.com', etat: 'actif' }
+  ];
+
+  detail(formateurId: number) {
+    // Find the formateur with the given ID
+    const formateur = this.formateurs.find((find: { id: number; }) => find.id === formateurId);
+
+    // Display the formateur details in a dialog or separate page
+    // alert(`Nom complet: ${formateur.nomComplet}\nEmail: ${formateur.email}\nEtat du compte: ${formateur.etat}`);
+  }
 
   ngOnInit(): void {
      this.users = JSON.parse(localStorage.getItem('users') || '[]');
@@ -70,9 +85,9 @@ export class GestionFormateurComponent implements OnInit{
 
   }
 
-  detail(id?: number){
+  // detail(id?: number){
 
-  }
+  // }
 
   updateUserEtat(user: any){
     const index = this.users.findIndex((u: any) => u.id === user.id);
@@ -121,5 +136,9 @@ export class GestionFormateurComponent implements OnInit{
 
     }
   }
+
+
+
+
 
 }

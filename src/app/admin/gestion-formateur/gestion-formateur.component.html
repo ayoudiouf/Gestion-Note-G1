@@ -25,7 +25,9 @@
             <td class="text-center">{{ formateur.email}}</td>
             <td class="text-center">{{ formateur.etat }}</td>
             <td class="text-center">
-              <button class="btn btn-sm btn-info me-3" (click)="detail(formateur.id)">Voir detail</button>
+              <button class="btn btn-sm btn-info me-3" data-bs-toggle="modal" data-bs-target="#detailFormateur" (click)="detail(formateur.id)">Voir detail</button>
+
+
               <!-- Button ajouter classe modal -->
               <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"
                 data-bs-target="#modifierApprenant" (click)="fomateurToUpdate(formateur.id)">
@@ -34,6 +36,31 @@
               <button class="btn btn-sm btn-danger ms-3" (click)="desactiveFormateur(formateur.id)">
                 {{ formateur.etat === 'actif' ? 'Désactiver le compte' : 'Activer le compte' }}
               </button>
+
+              <div class="modal fade" id="detailFormateur" tabindex="-1" aria-labelledby="detailFormateurLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="detailFormateurLabel">Detail formateur</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="nomCompletApprenant" class="form-label">Nom complet</label>
+                        <input type="text" disabled name="nomCompletApprenant" class="form-control" id="nomCompletApprenant" value="{{formateur.nomComplet}}">
+                      </div>
+                      <div class="mb-3">
+                        <label for="emailApprenant" class="form-label">Email</label>
+                        <input type="email" disabled name="emailApprenant" class="form-control" id="emailApprenant" value="{{formateur.email}}">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ok</button>
+                      <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateApprenant()">Modifier</button> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -107,9 +134,14 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">annuler</button>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateApprenant()">Modifier</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">annuler</button>
       </div>
     </div>
   </div>
 </div>
+
+
+
+<!-- Modal detail apprenant-->
+

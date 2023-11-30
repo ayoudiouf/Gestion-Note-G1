@@ -1,0 +1,83 @@
+<main class="mt-3">
+  <!-- Button ajouter classe modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ajoutNoter">
+    ajouter note
+  </button>
+
+  <div class="card border border-0 mt-3">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" class="text-center">Class</th>
+          <th scope="col" class="text-center">Nom complet</th>
+          <th scope="col" class="text-center">Noteote</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let note of notes">
+          <td class="text-center">{{ note.class}}</td>
+          <td class="text-center">{{note.nomComplet}}</td>
+          <td class="text-center">{{ note.note}}</td>
+
+          <td class="text-center">
+            <button class="btn btn-sm btn-info me-3" data-bs-toggle="modal" data-bs-target="#detailNote" (click)="(note.id)">Voir detail</button>
+
+
+            <!-- Button ajouter classe modal -->
+            <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"
+              data-bs-target="#modifierNote" (click)="noteToUpdate(note.id)">
+              Modifier formateur
+            </button>
+
+
+            <div class="modal fade" id="detailFormateur" tabindex="-1" aria-labelledby="detailNoteLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="detailFormateurLabel">Detail note</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="mb-3">
+                      <label for="nomCompletApprenant" class="form-label">Nom complet</label>
+                      <!-- <input type="text" disabled name="nomCompletApprenant" class="form-control" id="nomCompletApprenant" value="{{apprenant.nomComplet}}"> -->
+                    </div>
+                    <div class="mb-3">
+                      <label for="noteApprenant" class="form-label">Note</label>
+                      <!-- <input type="note" disabled name="noteApprenant" class="form-control" id="noteApprenant" value="{{apprenant.note}}"> -->
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ok</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- <nav aria-label="..." class="d-flex justify-content-center ">
+      <ul class="pagination ">
+        <li class="page-item disabled">
+          <a class="page-link">Precedent</a>
+        </li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item" aria-current="page">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Suivant</a>
+        </li>
+      </ul>
+    </nav> -->
+  </div>
+
+</main>
+
+
+

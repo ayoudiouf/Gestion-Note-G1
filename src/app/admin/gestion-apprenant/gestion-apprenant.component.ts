@@ -76,8 +76,9 @@ export class GestionApprenantComponent implements OnInit {
 
   }
 
-  detail(id?: number) {
-
+  detail(apprenantId: number) {
+    // Find the apprenant with the given ID
+    const apprenant = this.apprenants.find((find: { id: number; }) => find.id === apprenantId);
   }
 
   desactiveApprenant(id: any) {

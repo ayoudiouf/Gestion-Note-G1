@@ -11,6 +11,7 @@ import { GestionApprenantComponent } from './admin/gestion-apprenant/gestion-app
 import { GestionClasseComponent } from './admin/gestion-classe/gestion-classe.component';
 import { GestionMatiereComponent } from './admin/gestion-matiere/gestion-matiere.component';
 import { GestionFormateurComponent } from './admin/gestion-formateur/gestion-formateur.component';
+import { GestionNoteComponent } from './admin/gestion-note/gestion-note.component';
 
 const routes: Routes = [
   {path: 'connexion', component:AuthComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'gestion-matiere', component:GestionMatiereComponent},
   {path: 'gestion-formateur', component:GestionFormateurComponent},
   {path: 'gestion-apprenant', component:GestionApprenantComponent},
+  {path: 'gestion-note', component:GestionNoteComponent},
   {path: 'acceuil-formateur', component:AcceuilFormateurComponent},
   {path: 'acceuil-apprenant', component:AcceuilApprenantComponent},
   {path: 'ajouter-evaluation', component:AjouterEvaluationComponent},
