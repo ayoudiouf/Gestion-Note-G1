@@ -11,7 +11,7 @@
         <tr>
           <th scope="col" class="text-center">Class</th>
           <th scope="col" class="text-center">Nom complet</th>
-          <th scope="col" class="text-center">Noteote</th>
+          <th scope="col" class="text-center">Note</th>
 
         </tr>
       </thead>
@@ -27,38 +27,46 @@
 
             <!-- Button ajouter classe modal -->
             <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"
-              data-bs-target="#modifierNote" (click)="voirNote(note.id)">
-              Modifier formateur
+              data-bs-target="ajouterNote" (click)="voirNote(note.id)">
+             Ajouter Note
             </button>
-
-
-            <div class="modal fade" id="detailFormateur" tabindex="-1" aria-labelledby="detailNoteLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="detailFormateurLabel">Detail note</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="mb-3">
-                      <label for="nomCompletApprenant" class="form-label">Nom complet</label>
-                      <!-- <input type="text" disabled name="nomCompletApprenant" class="form-control" id="nomCompletApprenant" value="{{apprenant.nomComplet}}"> -->
-                    </div>
-                    <div class="mb-3">
-                      <label for="noteApprenant" class="form-label">Note</label>
-                      <!-- <input type="note" disabled name="noteApprenant" class="form-control" id="noteApprenant" value="{{apprenant.note}}"> -->
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ok</button>
-                  </div>
-                </div>
-              </div>
+             <!-- model ajout note -->
+    <div class="modal fade" id="ajouterNote" tabindex="-1" aria-labelledby="ajouterNote" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="detailFormateurLabel">Ajouter Notes</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="nomCompletApprenant" class="form-label">Nom complet</label>
+              <input type="text" disabled name="nomCompletApprenant" class="form-control" id="nomCompletApprenant" value="{{note.nomComplet}}">
             </div>
+            <div class="mb-3">
+              <label for="classApprenant" class="form-label">Class</label>
+              <input type="text" disabled name="classtApprenant" class="form-control" id="classApprenant" value="{{note.class}}">
+            </div>
+            <div class="mb-3">
+              <label for="note" class="form-label">Note</label>
+              <input type="note" disabled name="noteApprenant" class="form-control" id="noteApprenant" value="{{note.apprenant}}">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ok</button>
+            <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateApprenant()">Modifier</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
           </td>
         </tr>
       </tbody>
     </table>
+
 
     <!-- <nav aria-label="..." class="d-flex justify-content-center ">
       <ul class="pagination ">
