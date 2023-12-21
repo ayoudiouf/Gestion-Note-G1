@@ -1,40 +1,74 @@
 <div class="container">
   <app-header></app-header>
+  <div class="headapprenant d-flex justify-content-around">
+    <div>
+      <header class="header" role="banner " style=" height: 400px; width: 250px;">
 
-  <main class=" mt-5">
-    <div class="cards row">
-      <div class="card border border-0">
-        <div class="leftCard">
-          <h1>3</h1>
-          <h6>Nombre de classe</h6>
+        <div class="nav-wrap">
+          <nav class="main-nav m-lg-3" role="navigation">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" routerLink="/acceuil-admin">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/gestion-classe">Gestion des classe</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/gestion-matiere">Gestion des matières</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/gestion-apprenant">Gestion des apprenant</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/gestion-formateur">Gestion des formateur</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/gestion-note">Gestion note</a>
+              </li>
+            </ul>
+          </nav>
+
         </div>
-      </div>
-      <div class="card border border-0">
-        <div class="leftCard">
-          <h1>6</h1>
-          <h6>Nombre de cours/semaine</h6>
+      </header>
+     </div>
+     <div class="w-100">
+      <main class=" mt-5">
+        <div class="cards row">
+          <div class="card border border-0">
+            <div class="leftCard">
+              <h1>3</h1>
+              <h6>Nombre de classe</h6>
+            </div>
+          </div>
+          <div class="card border border-0">
+            <div class="leftCard">
+              <h1>6</h1>
+              <h6>Nombre de cours/semaine</h6>
+            </div>
+          </div>
+          <div class="card border border-0">
+            <div class="leftCard">
+              <h1>3</h1>
+              <h6>Nombre d'évaluation</h6>
+            </div>
+          </div>
+          <div class="card border border-0">
+            <div class="leftCard">
+              <h1>0</h1>
+              <h6>Nombre d'évaluation reporter</h6>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="card border border-0">
-        <div class="leftCard">
-          <h1>3</h1>
-          <h6>Nombre d'évaluation</h6>
+
+        <div class="bottomMain mt-3">
+          <div class="bottomMainItem"></div>
+          <div class="bottomMainItem"></div>
         </div>
-      </div>
-      <div class="card border border-0">
-        <div class="leftCard">
-          <h1>0</h1>
-          <h6>Nombre d'évaluation reporter</h6>
-        </div>
-      </div>
+      </main>
+
+      <app-footer></app-footer>
+
+    </div>
+     </div>
     </div>
 
-    <div class="bottomMain mt-3">
-      <div class="bottomMainItem"></div>
-      <div class="bottomMainItem"></div>
-    </div>
-  </main>
-
-  <app-footer></app-footer>
-
-</div>

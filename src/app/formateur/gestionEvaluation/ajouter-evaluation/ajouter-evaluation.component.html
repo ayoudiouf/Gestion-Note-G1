@@ -11,17 +11,17 @@
             <label for="emailInput" class="form-label">La classe</label>
             <select class="form-select form-select-sm" aria-label="Small select example"
               [(ngModel)]="selectClasseValue">
-              <option selected value="">Veuillez selectionner une matière</option>
+              <option selected value="">Veuillez selectionner une matiere</option>
               <option *ngFor="let classe of getClassObj" [ngValue]="classe.id">
                 {{classe.nom}}
               </option>
             </select>
           </div>
           <div class="mb-3">
-            <label for="matieres" class="form-label">Matière</label>
+            <label for="matieres" class="form-label">Matiere</label>
             <select class="form-select form-select-sm" aria-label="Small select example"
               [(ngModel)]="selectMatiereValue">
-              <option selected value="">Veuillez selectionner une matière</option>
+              <option selected value="">Veuillez selectionner une matiere</option>
               <option *ngFor="let matiere of allMatiereByIdProf" [ngValue]="matiere.id">
                 {{matiere.nom}}
               </option>

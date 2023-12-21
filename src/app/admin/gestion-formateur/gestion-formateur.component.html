@@ -1,145 +1,181 @@
 <div class="container">
   <app-header></app-header>
-  <main class="mt-3">
-    <!-- Button ajouter classe modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ajoutFormateur">
-      ajouter formateur
-    </button>
+  <div class="headmatiere d-flex justify-content-around g-5">
+    <div>
+      <header class="header" role="banner " style=" height: 400px; width: 220px;">
 
-    <div class="card border border-0 mt-3">
+        <div class="nav-wrap">
+          <nav class="main-nav" role="navigation">
+            <ul class="navbar-nav m-lg-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" routerLink="/acceuil-admin">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/gestion-classe">Gestion des classe</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/gestion-matiere">Gestion des matières</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/gestion-apprenant">Gestion des apprenant</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/gestion-formateur">Gestion des formateur</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/gestion-note">Gestion note</a>
+              </li>
+            </ul>
+          </nav>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col" class="text-center">Image</th>
-            <th scope="col" class="text-center">Nom complet</th>
-            <th scope="col" class="text-center">email</th>
-            <th scope="col" class="text-center">etat compte</th>
-            <th scope="col" class="text-center">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let formateur of formateurs">
-            <td class="text-center">{{ formateur.image}}</td>
-            <td class="text-center">{{ formateur.nomComplet}}</td>
-            <td class="text-center">{{ formateur.email}}</td>
-            <td class="text-center">{{ formateur.etat }}</td>
-            <td class="text-center">
-              <button class="btn btn-sm btn-info me-3" data-bs-toggle="modal" data-bs-target="#detailFormateur" (click)="detail(formateur.id)">Voir detail</button>
+        </div>
+      </header>
+     </div>
+     <div class="w-100">
+      <main class="mt-3">
+        <!-- Button ajouter classe modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ajoutFormateur">
+          ajouter formateur
+        </button>
+
+        <div class="card border border-0 mt-3">
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">Image</th>
+                <th scope="col" class="text-center">Nom complet</th>
+                <th scope="col" class="text-center">email</th>
+                <th scope="col" class="text-center">etat compte</th>
+                <th scope="col" class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let formateur of formateurs">
+                <td class="text-center">{{ formateur.image}}</td>
+                <td class="text-center">{{ formateur.nomComplet}}</td>
+                <td class="text-center">{{ formateur.email}}</td>
+                <td class="text-center">{{ formateur.etat }}</td>
+                <td class="text-center">
+                  <button class="btn btn-sm btn-info me-3" data-bs-toggle="modal" data-bs-target="#detailFormateur" (click)="detail(formateur.id)">Voir detail</button>
 
 
-              <!-- Button ajouter classe modal -->
-              <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"
-                data-bs-target="#modifierApprenant" (click)="fomateurToUpdate(formateur.id)">
-                Modifier formateur
-              </button>
-              <button class="btn btn-sm btn-danger ms-3" (click)="desactiveFormateur(formateur.id)">
-                {{ formateur.etat === 'actif' ? 'Désactiver le compte' : 'Activer le compte' }}
-              </button>
+                  <!-- Button ajouter classe modal -->
+                  <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                    data-bs-target="#modifierApprenant" (click)="fomateurToUpdate(formateur.id)">
+                    Modifier formateur
+                  </button>
+                  <button class="btn btn-sm btn-danger ms-3" (click)="desactiveFormateur(formateur.id)">
+                    {{ formateur.etat === 'actif' ? 'Désactiver le compte' : 'Activer le compte' }}
+                  </button>
 
-              <div class="modal fade" id="detailFormateur" tabindex="-1" aria-labelledby="detailFormateurLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="detailFormateurLabel">Detail formateur</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="mb-3">
-                        <label for="nomCompletApprenant" class="form-label">Nom complet</label>
-                        <input type="text" disabled name="nomCompletApprenant" class="form-control" id="nomCompletApprenant" value="{{formateur.nomComplet}}">
+                  <div class="modal fade" id="detailFormateur" tabindex="-1" aria-labelledby="detailFormateurLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="detailFormateurLabel">Detail formateur</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="mb-3">
+                            <label for="nomCompletApprenant" class="form-label">Nom complet</label>
+                            <input type="text" disabled name="nomCompletApprenant" class="form-control" id="nomCompletApprenant" value="{{formateur.nomComplet}}">
+                          </div>
+                          <div class="mb-3">
+                            <label for="emailApprenant" class="form-label">Email</label>
+                            <input type="email" disabled name="emailApprenant" class="form-control" id="emailApprenant" value="{{formateur.email}}">
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ok</button>
+                          <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateApprenant()">Modifier</button> -->
+                        </div>
                       </div>
-                      <div class="mb-3">
-                        <label for="emailApprenant" class="form-label">Email</label>
-                        <input type="email" disabled name="emailApprenant" class="form-control" id="emailApprenant" value="{{formateur.email}}">
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ok</button>
-                      <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateApprenant()">Modifier</button> -->
                     </div>
                   </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-      <nav aria-label="..." class="d-flex justify-content-center ">
-        <ul class="pagination ">
-          <li class="page-item disabled">
-            <a class="page-link">Precedent</a>
-          </li>
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item" aria-current="page">
-            <a class="page-link" href="#">2</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Suivant</a>
-          </li>
-        </ul>
-      </nav>
+          <nav aria-label="..." class="d-flex justify-content-center ">
+            <ul class="pagination ">
+              <li class="page-item disabled">
+                <a class="page-link">Precedent</a>
+              </li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item" aria-current="page">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Suivant</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+      </main>
+
+
     </div>
 
-  </main>
 
-
-</div>
-
-
-<!-- Modal ajouter apprenant-->
-<div class="modal fade" id="ajoutFormateur" tabindex="-1" aria-labelledby="ajoutFormateurLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="ajoutFormateurLabel">Ajouter apprenant</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="nomCompletApprenant" class="form-label">Nom complet</label>
-          <input type="text" name="nomCompletApprenant" class="form-control" id="nomCompletApprenant" [(ngModel)]="nomCompletFormateur">
+    <!-- Modal ajouter formateur-->
+    <div class="modal fade" id="ajoutFormateur" tabindex="-1" aria-labelledby="ajoutFormateurLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="ajoutFormateurLabel">Ajouter apprenant</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="nomCompletApprenant" class="form-label">Nom complet</label>
+              <input type="text" name="nomCompletApprenant" class="form-control" id="nomCompletApprenant" [(ngModel)]="nomCompletFormateur">
+            </div>
+            <div class="mb-3">
+              <label for="emailApprenant" class="form-label">Email</label>
+              <input type="email" name="emailApprenant" class="form-control" id="emailApprenant" [(ngModel)]="emailFormateur">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="clearInput()">annuler</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addFormateur()">Ajouter</button>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="emailApprenant" class="form-label">Email</label>
-          <input type="email" name="emailApprenant" class="form-control" id="emailApprenant" [(ngModel)]="emailFormateur">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="clearInput()">annuler</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addFormateur()">Ajouter</button>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Modal modifier apprenant-->
-<div class="modal fade" id="modifierApprenant" tabindex="-1" aria-labelledby="modifierApprenantLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modifierApprenantLabel">Modifier formateur</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="nomCompletApprenant" class="form-label">Nom complet</label>
-          <input type="text" name="nomCompletApprenant" class="form-control" id="nomCompletApprenant" [(ngModel)]="nomCompletFormateur">
+    <!-- Modal modifier apprenant-->
+    <div class="modal fade" id="modifierApprenant" tabindex="-1" aria-labelledby="modifierApprenantLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modifierApprenantLabel">Modifier formateur</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="nomCompletApprenant" class="form-label">Nom complet</label>
+              <input type="text" name="nomCompletApprenant" class="form-control" id="nomCompletApprenant" [(ngModel)]="nomCompletFormateur">
+            </div>
+            <div class="mb-3">
+              <label for="emailApprenant" class="form-label">Email</label>
+              <input type="email" name="emailApprenant" class="form-control" id="emailApprenant" [(ngModel)]="emailFormateur">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateApprenant()">Modifier</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">annuler</button>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="emailApprenant" class="form-label">Email</label>
-          <input type="email" name="emailApprenant" class="form-control" id="emailApprenant" [(ngModel)]="emailFormateur">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateApprenant()">Modifier</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">annuler</button>
       </div>
     </div>
-  </div>
-</div>
+     </div>
+
+    </div>
+
 
 
 

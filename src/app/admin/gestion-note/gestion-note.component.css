@@ -1,0 +1,11 @@
+.mt-3{
+  background-color: white;
+  box-shadow: 3px 3px 5px crimson;
+  margin-top: 50px;
+}
+.nav-wrap{
+  background-color: white;
+  box-shadow: 3px 3px 5px crimson;
+  margin-right: 20px;
+  height: 500px;
+}

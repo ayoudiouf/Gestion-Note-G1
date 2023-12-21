@@ -96,7 +96,7 @@ export class GestionMatiereComponent {
     }
   }
 
-  removeClasse(id?: number) {
+  removeMatiere(id?: number) {
     Swal.fire({
       title: "Etes-vous sûr?",
       text: "de vouloir supprimer",
